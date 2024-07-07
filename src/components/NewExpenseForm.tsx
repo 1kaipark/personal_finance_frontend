@@ -98,11 +98,11 @@ const NewExpenseForm: React.FC<Props> = ({ onSubmit }) => {
               onChange={handleChange}
             >
               <option value="">choose...</option>
-              <option value="fun">FUN</option>
-              <option value="education">EDUCATION</option>
-              <option value="transport">TRANSPORT</option>
-              <option value="food">FOOD</option>
-              <option value="living">LIVING</option>
+              <option value="fun">FUN😹</option>
+              <option value="education">EDUCATION🤓</option>
+              <option value="transport">TRANSPORT🚗</option>
+              <option value="food">FOOD🍔</option>
+              <option value="living">LIVING🏡</option>
               {/* Add more options as needed */}
             </select>
           </div>
