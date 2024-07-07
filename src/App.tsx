@@ -4,6 +4,7 @@ import TopBar from "./components/TopBar";
 import ExpenseSummary from "./components/ExpenseSummary";
 import NewExpenseForm from "./components/NewExpenseForm";
 import AllExpensesView from "./components/AllExpensesView";
+import YesNoConfirmation from "./components/YesNoConfirmation";
 
 import {
   getUserName,
@@ -25,6 +26,7 @@ import "./App.css";
 establishSession();
 
 function App() {
+  // TODOS: 'download' option
   // NOTE: MOCK DATA /////////////
   // sample heights, to be replaced by request get
   // actual data needed:
@@ -55,7 +57,29 @@ function App() {
   const [expenses, setExpenses] = useState<{ [key: string]: any }>([]);
   const [months, setMonths] = useState(["ALL"]);
   const [monthlyTotals, setMonthlyTotals] = useState([]);
-  const [sum, setSum] = useState('0');
+  const [sum, setSum] = useState("0");
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [expenseToDelete, setExpenseToDelete] = useState({
+    index: "",
+    title: "",
+  });
+
+  const handleYesClick = () => {
+    console.log(`expense ${expenseToDelete.title} will be deleted`);
+    try {
+      const deleteResponse = deleteExpense(expenseToDelete.index);
+      console.log(deleteResponse);
+      refreshEverything();
+    } catch (error) {
+      console.log("error deleting expense", error);
+    }
+    setIsModalVisible(false);
+  };
+  const handleNoClick = () => {
+    console.log("expense will NOT be deleted");
+    setIsModalVisible(false);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -119,14 +143,9 @@ function App() {
   };
 
   const handleDeleteExpense = async (index: string, title: string) => {
-    try {
-      alert(["Deleting expense", title, "index", index]);
-      const deleteExpenseResult = await deleteExpense(index);
-      console.log(deleteExpenseResult);
-      refreshEverything();
-    } catch (error) {
-      console.error("error deleting expense:", error);
-    }
+    setIsModalVisible(true);
+    console.log(isModalVisible, index, title);
+    setExpenseToDelete({ index, title });
   };
 
   /////////////
@@ -148,8 +167,18 @@ function App() {
         onDeleteButtonClick={(index, title) =>
           handleDeleteExpense(index, title)
         }
-        onRefreshButtonClick={() => alert("Refresh clicked")}
+        onRefreshButtonClick={() => refreshEverything()}
       />
+
+      {isModalVisible && (
+        <YesNoConfirmation
+          title="Delete"
+          text={`Confirm delete: ${expenseToDelete.title}?`}
+          onYesClick={handleYesClick}
+          onNoClick={handleNoClick}
+          isVisible={isModalVisible}
+        />
+      )}
     </>
   );
 }

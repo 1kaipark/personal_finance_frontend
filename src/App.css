@@ -79,3 +79,17 @@ h1 {
 .btn.btn-secondary.dropdown-toggle {
   display: block;
 }
+
+#confirm-delete-btn {
+  color: white;
+  background-color: rgb(172, 0, 0);
+}
+
+.modal-title {
+  font-size: medium;
+}
+
+.close {
+  display: flex;
+  flex-direction: row;
+}

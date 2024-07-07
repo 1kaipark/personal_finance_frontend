@@ -36,6 +36,8 @@ const AllExpensesView: React.FC<Props> = ({
   const handleDeleteButtonClick = () => {
     if (selectedIndex !== null) {
       onDeleteButtonClick(selectedIndex.toString(), selectedTitle);
+    } else {
+      alert("Please select an expense to delete.")
     }
   };
 
