@@ -50,12 +50,12 @@ function App() {
 
   const [userName, setUserName] = useState("");
   const [heights, setHeights] = useState<
-    { category: string; amount: number }[]
+    { category: string; amount: string }[]
   >([]);
   const [expenses, setExpenses] = useState<{ [key: string]: any }>([]);
   const [months, setMonths] = useState(["ALL"]);
   const [monthlyTotals, setMonthlyTotals] = useState([]);
-  const [sum, setSum] = useState(0);
+  const [sum, setSum] = useState('0');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -92,7 +92,7 @@ function App() {
     setMonthlyTotals(newMonthlyTotalsData);
     const newMonthlySumData = await getMonthlySum(month);
     setSum(newMonthlySumData.sum);
-  }
+  };
 
   const handleFormSubmit = async (formData: {
     date: string;

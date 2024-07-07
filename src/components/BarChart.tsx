@@ -1,38 +1,36 @@
 import React from "react";
 
 interface Props {
-  heights: { category: string; amount: number }[];
+  heights: { category: string; amount: string }[];
   sum: string;
 }
 
 const BarChart: React.FC<Props> = ({ heights, sum }) => {
   return (
-    <>
-      <div>
-        {heights.map((item, index) => (
+    <div className="barchart-container">
+      {heights.map((item, index) => (
+        <div
+          key={index}
+          className="progress"
+          role="progressbar"
+          aria-label={`${item.category} progress`}
+          aria-valuenow={parseFloat(item.amount) * 100}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          style={{ height: "40px", margin: "10px", padding: "0px" }}
+          id="proggybar"
+        >
           <div
-            key={index}
-            className="progress"
-            role="progressbar"
-            aria-label="Example 1px high"
-            aria-valuenow="25"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            style={{ height: "40px", margin: "10px", padding: "0px" }}
-            id="proggybarbackground"
+            className="progress-bar"
+            id="proggybar"
+            style={{ width: `${parseFloat(item.amount) * 100}%` }}
           >
-            <div
-              className="progress-bar"
-              style={{ width: `${item.amount * 100}%`}}
-              id='proggybar'
-            >
-              {item.category}
-            </div>
+            {item.category}
           </div>
-        ))}
-        <p id='sum-label'>total spendings: ${sum}</p>
-      </div>
-    </>
+        </div>
+      ))}
+      <p className='total-spending'>Total spendings: ${sum}</p>
+    </div>
   );
 };
 

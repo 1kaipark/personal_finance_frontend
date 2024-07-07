@@ -7,7 +7,7 @@ interface Props {
 }
 
 const DropDown: React.FC<Props> = ({ items, defaultText, onItemClick }) => {
-  const [selectedIndex, setSelectedIndex] = useState(-1);
+  const [, setSelectedIndex] = useState(-1);
   const [selectedText, setSelectedText] = useState(defaultText);
 
   const handleItemClick = (index: number, item: string) => {

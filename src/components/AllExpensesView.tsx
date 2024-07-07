@@ -25,7 +25,7 @@ const AllExpensesView: React.FC<Props> = ({
   onRefreshButtonClick,
 }) => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null); // we'll need to pass the index to the delete button to eventually make the API call
-  const [selectedTitle, setSelectedTitle] = useState<string | null>(null);
+  const [selectedTitle, setSelectedTitle] = useState<string>("");
   // handler for selecting table row
   const handleRowClick = (index: number, title: string) => {
     onRowClick(index, title);
@@ -35,7 +35,7 @@ const AllExpensesView: React.FC<Props> = ({
 
   const handleDeleteButtonClick = () => {
     if (selectedIndex !== null) {
-      onDeleteButtonClick(selectedIndex, selectedTitle);
+      onDeleteButtonClick(selectedIndex.toString(), selectedTitle);
     }
   };
 

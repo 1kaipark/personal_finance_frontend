@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import BarChart from "./BarChart";
 import DropDown from "./DropDown";
 import MiniTable from "./MiniTable"
@@ -8,8 +8,8 @@ interface Props {
   months: string[];
   onMonthClick: (index: number, item: string) => void;
   // for the bar chart
-  heights: { category: string; amount: number }[];
-  sum: number;
+  heights: { category: string; amount: string }[];
+  sum: string;
   monthlyTotals: {
     category: string;
     amount: number;
