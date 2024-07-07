@@ -15,14 +15,14 @@ interface Props {
   };
   onRowClick: (index: number, title: string) => void;
   onDeleteButtonClick: (index: string, title: string) => void;
-  onRefreshButtonClick: () => void;
+  onDownloadButtonClick: () => void;
 }
 
 const AllExpensesView: React.FC<Props> = ({
   data,
   onRowClick,
   onDeleteButtonClick,
-  onRefreshButtonClick,
+  onDownloadButtonClick,
 }) => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null); // we'll need to pass the index to the delete button to eventually make the API call
   const [selectedTitle, setSelectedTitle] = useState<string>("");
@@ -41,8 +41,8 @@ const AllExpensesView: React.FC<Props> = ({
     }
   };
 
-  const handleRefreshButtonClick = () => {
-    onRefreshButtonClick();
+  const handleDownloadButtonClick = () => {
+    onDownloadButtonClick();
   };
 
   return (
@@ -59,9 +59,9 @@ const AllExpensesView: React.FC<Props> = ({
       <button
         type="button"
         className="btn btn-info"
-        onClick={handleRefreshButtonClick}
+        onClick={handleDownloadButtonClick}
       >
-        REFRESH DATA
+        DOWNLOAD DATA
       </button>
     </div>
   );

@@ -17,6 +17,7 @@ export const getMonthlyHeights = async (month: string) => {
 
 export const getAllExpenses = async () => {
   const response = await axios.get(`${API_BASE_URL}/get_all_expenses`);
+
   return response.data;
 };
 

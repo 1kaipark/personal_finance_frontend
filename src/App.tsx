@@ -19,6 +19,8 @@ import {
   establishSession,
 } from "./services/apiService";
 
+import { downloadDataAsCSV } from "./services/downloadService";
+
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -148,6 +150,10 @@ function App() {
     setExpenseToDelete({ index, title });
   };
 
+  const handleDownloadButtonClicked = () => {
+    downloadDataAsCSV(expenses, `expenses_${userName}`);
+  }
+
   /////////////
 
   return (
@@ -167,7 +173,7 @@ function App() {
         onDeleteButtonClick={(index, title) =>
           handleDeleteExpense(index, title)
         }
-        onRefreshButtonClick={() => refreshEverything()}
+        onDownloadButtonClick={handleDownloadButtonClicked}
       />
 
       {isModalVisible && (
