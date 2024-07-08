@@ -6,6 +6,8 @@ import NewExpenseForm from "./components/NewExpenseForm";
 import AllExpensesView from "./components/AllExpensesView";
 import YesNoConfirmation from "./components/YesNoConfirmation";
 
+import { Expense } from "./models/Expense";
+
 import {
   getUserName,
   getMonthlyHeights,
@@ -56,7 +58,7 @@ function App() {
   const [heights, setHeights] = useState<
     { category: string; amount: string }[]
   >([]);
-  const [expenses, setExpenses] = useState<{ [key: string]: any }>([]);
+  const [expenses, setExpenses] = useState<{ [key: string]: Expense }>({});
   const [months, setMonths] = useState(["ALL"]);
   const [monthlyTotals, setMonthlyTotals] = useState([]);
   const [sum, setSum] = useState("0");
@@ -120,18 +122,12 @@ function App() {
     setSum(newMonthlySumData.sum);
   };
 
-  const handleFormSubmit = async (formData: {
-    date: string;
-    category: string;
-    title: string;
-    amount: string;
-    notes: string;
-  }) => {
+  const handleFormSubmit = async (expense: Expense) => {
     // Handle the form submission data here
-    console.log("Form data received in App component:", formData);
+    console.log("Form data received in App component:", expense);
     console.log("month", month);
     try {
-      const newExpense = await addExpense(formData);
+      const newExpense = await addExpense(expense);
       console.log(newExpense);
       // update all data
       refreshEverything();
@@ -152,7 +148,7 @@ function App() {
 
   const handleDownloadButtonClicked = () => {
     downloadDataAsCSV(expenses, `expenses_${userName}`);
-  }
+  };
 
   /////////////
 

@@ -14,3 +14,13 @@ export class Expense {
         this.notes = notes;
     }
 }
+
+export const convertToExpense = (data: any): Expense => {
+    return new Expense(
+        data.date,
+        data.category,
+        data.title,
+        data.amount,
+        data.notes
+    );
+};

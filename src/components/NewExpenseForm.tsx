@@ -1,13 +1,8 @@
 import React, { useState } from "react";
+import { Expense } from "../models/Expense"
 
 interface Props {
-  onSubmit: (formData: {
-    date: string;
-    category: string;
-    title: string;
-    amount: string;
-    notes: string;
-  }) => void;
+  onSubmit: (formData: Expense) => void;
 }
 
 const NewExpenseForm: React.FC<Props> = ({ onSubmit }) => {
@@ -44,8 +39,16 @@ const NewExpenseForm: React.FC<Props> = ({ onSubmit }) => {
       alert("Please fill out all required fields.");
       return;
     }
+
+    const newExpense = new Expense(
+      formData.date,
+      formData.category,
+      formData.title,
+      parseFloat(formData.amount),
+      formData.notes
+    );
     console.log("Form submitted with data:", formData);
-    onSubmit(formData);
+    onSubmit(newExpense);
     // You can perform further actions like sending data to server or processing here
     // Example: Reset the form after submission
     setFormData({

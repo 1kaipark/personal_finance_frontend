@@ -3,15 +3,11 @@ import { Pagination } from "react-bootstrap";
 import styles from "./table.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+import { Expense } from "../models/Expense"
+
 interface Props {
   data: {
-    [key: string]: {
-      date: string;
-      category: string;
-      title: string;
-      amount: number;
-      notes: string;
-    };
+    [key: string]: Expense;
   };
   onRowClick: (index: number, title: string) => void;
 }
