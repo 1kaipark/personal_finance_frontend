@@ -1,5 +1,6 @@
-import React from 'react';
-import styles from './table.module.css';
+import React from "react";
+import styles from "./table.module.css";
+import { FloatToCurrencyString } from "../utils/FloatToCurrencyString";
 
 interface Props {
   monthlyTotals: {
@@ -21,7 +22,9 @@ const DataTable: React.FC<Props> = ({ monthlyTotals }) => {
         {monthlyTotals.map((item, index) => (
           <tr key={index}>
             <td>{item.category}</td>
-            <td>{item.amount}</td>
+            <td>
+              {FloatToCurrencyString(item.amount)}
+            </td>
           </tr>
         ))}
       </tbody>

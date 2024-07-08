@@ -4,6 +4,7 @@ import styles from "./table.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { Expense } from "../models/Expense"
+import { FloatToCurrencyString } from "../utils/FloatToCurrencyString";
 
 interface Props {
   data: {
@@ -57,7 +58,7 @@ const DataTable: React.FC<Props> = ({ data, onRowClick }) => {
                 <td>{value.date}</td>
                 <td>{value.category}</td>
                 <td>{value.title}</td>
-                <td>{value.amount}</td>
+                <td>{FloatToCurrencyString(value.amount)}</td>
                 <td>{value.notes}</td>
               </tr>
             );

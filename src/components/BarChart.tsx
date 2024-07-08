@@ -29,7 +29,7 @@ const BarChart: React.FC<Props> = ({ heights, sum }) => {
           </div>
         </div>
       ))}
-      <p className='total-spending'>Total spendings: ${sum}</p>
+      <p className='total-spending'>total spendings: ${sum}</p>
     </div>
   );
 };
