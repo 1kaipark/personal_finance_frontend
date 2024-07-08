@@ -14,6 +14,7 @@ const NewExpenseForm: React.FC<Props> = ({ onSubmit }) => {
     notes: "",
   });
 
+  // https://medium.com/@vanthedev/how-to-pre-populate-inputs-when-editing-forms-in-react-2530d6069ab3
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
