@@ -4,21 +4,33 @@
   padding: 2rem;
   text-align: left;
   font-family: "Roboto", sans-serif;
+  background-color: #252b2d;
 }
 
 .btn {
   margin: 1rem auto;
-  background-color: white;
+  background-color: #b2bec3;
   box-shadow: 0 8px 16px 0 black, 0 6px 20px 0 gray;
   display: flex;
 }
 
 .btn:hover {
-  background-color: rgb(170, 100, 255);
+  background-color: #ff7675;
 }
 
 .progress-bar {
-  background-color: gray;
+  background-color: #0091ff;
+  color: #dfe6e9;
+  display: flex;
+  font-style: italic;
+  box-shadow: 0 4px 8px 0 #376ca0, 0 4px 8px 0 #0984e3;
+
+}
+
+.progress {
+  background-color: #262d2f;
+  box-shadow: 0 8px 16px 0 black, 0 6px 20px 0 gray;
+  justify-content: start;
 }
 
 .form-control {
@@ -28,7 +40,7 @@
 
 .container-fluid {
   margin: 2rem auto;
-  background-color: rgb(30, 30, 30);
+  background-color: #2d3436;
   border-radius: 20px;
   box-shadow: 0 8px 16px 0 black, 0 4px 10px 0 gray;
   padding: 1rem;
@@ -61,7 +73,8 @@ h1 {
 }
 
 #month-select {
-  background-color: gray;
+  background-color: #b2bec3;
+  color: #2d3436;
   font-family: "Roboto", sans-serif;
   font-weight: 200;
   font-style: italic;
@@ -69,7 +82,7 @@ h1 {
 
 
 #month-select:hover {
-  background-color: rgb(255, 86, 86);
+  background-color: #ff7675;
 }
 
 .select-month-label {
